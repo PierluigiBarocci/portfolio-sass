@@ -8,6 +8,7 @@
     @if $show-home-image {
         &#bg-img {
             background: $home-image;
+            /* background: url('../img/background.jpg');*/
             background-attachment: fixed;
             background-size: cover;
 

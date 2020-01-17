@@ -19,6 +19,7 @@ body {
 
 body#bg-img {
   background: url("https://cdn.pixabay.com/photo/2015/03/26/10/24/apple-691282_1280.jpg");
+  /* background: url('../img/background.jpg');*/
   background-attachment: fixed;
   background-size: cover;
 }
