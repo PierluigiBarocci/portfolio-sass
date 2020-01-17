@@ -4,4 +4,44 @@ header {
     position: fixed;
     z-index: 2;
     width: 100%;
+
+    .menu-btn {
+        position: absolute;
+        z-index: 3;
+        right: 35px;
+        top: 35px;
+        cursor: pointer;
+        /* richiamo la funzione per la transition, la riuserò spesso */
+        @include easeOut;
+
+        .btn-line {
+            /* l'hamburger meglio disegnarcelo, ci servirà per l'animazione più tardi */
+            width: 28px;
+            height: 3px;
+            margin-bottom: 5px;
+            background-color: white;
+            @include easeOut;
+        }
+
+        &.close {
+            /* Quando prende la classe close ruota di 180 gradi*/
+            transform: rotate(180deg);
+
+            /* E delle 3 linee di cui è composto: */
+            .btn-line {
+                &:nth-child(1) {
+                    /* La prima ruota in senso orario e trasla un po' */
+                    transform: rotate(45deg) translate(5px, 5px);
+                }
+                &:nth-child(2) {
+                    /* La seconda se ne va*/
+                    opacity: 0;
+                }
+                &:nth-child(3) {
+                    /* La Terza fa la marcia inversa della prima per formare una X*/
+                    transform: rotate(-45deg) translate(7px, -6px);
+                }
+            }
+        }
+    }
 }

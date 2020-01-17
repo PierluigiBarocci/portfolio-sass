@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Gayathri:400,700&display=swap);/* Common Rules */
+@import url(https://fonts.googleapis.com/css?family=Gayathri:400,700&display=swap);@charset "UTF-8";
+
+/* Common Rules */
 
 * {
   margin: 0;
@@ -7,6 +9,7 @@
 }
 
 body {
+  /*includo il mixin che gestisce lo sfondo e l'overlay */
   background-color: #444;
   color: white;
   font-family: "Gayathri", sans-serif;
@@ -49,6 +52,7 @@ h2.sm-heading,
 h3.sm-heading {
   margin-bottom: 2rem;
   padding: 0.2rem 1rem;
+  /* lighten ce la regala sass: permette di partire da un colore e la seconda cifra sta ad indicare di quanto voglio schiarire il colore */
   background: rgba(73, 73, 73, 0.5);
 }
 
@@ -67,6 +71,51 @@ header {
   position: fixed;
   z-index: 2;
   width: 100%;
+}
+
+header .menu-btn {
+  position: absolute;
+  z-index: 3;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+  /* richiamo la funzione per la transition, la riuserò spesso */
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-btn .btn-line {
+  /* l'hamburger meglio disegnarcelo, ci servirà per l'animazione più tardi */
+  width: 28px;
+  height: 3px;
+  margin-bottom: 5px;
+  background-color: white;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-btn.close {
+  /* Quando prende la classe close ruota di 180 gradi*/
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  /* E delle 3 linee di cui è composto: */
+}
+
+header .menu-btn.close .btn-line:nth-child(1) {
+  /* La prima ruota in senso orario e trasla un po' */
+  -webkit-transform: rotate(45deg) translate(5px, 5px);
+          transform: rotate(45deg) translate(5px, 5px);
+}
+
+header .menu-btn.close .btn-line:nth-child(2) {
+  /* La seconda se ne va*/
+  opacity: 0;
+}
+
+header .menu-btn.close .btn-line:nth-child(3) {
+  /* La Terza fa la marcia inversa della prima per formare una X*/
+  -webkit-transform: rotate(-45deg) translate(7px, -6px);
+          transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* Styling Main */

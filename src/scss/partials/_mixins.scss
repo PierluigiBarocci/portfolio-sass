@@ -1,7 +1,9 @@
+// /* Gestisce una transizione che userò spesso */
 @mixin easeOut {
     transition: all 0.5s ease-out;
 };
 
+// /* Gestisce il backdround nella home */
 @mixin background {
     @if $show-home-image {
         &#bg-img {
@@ -9,6 +11,7 @@
             background-attachment: fixed;
             background-size: cover;
 
+            // /* modo interessante per creare un overlay senza aggiungere un div all'html*/
             &:after {
                 content: '';
                 position: absolute;

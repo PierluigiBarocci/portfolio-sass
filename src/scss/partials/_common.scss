@@ -7,6 +7,7 @@
 }
 
 body {
+    /*includo il mixin che gestisce lo sfondo e l'overlay */
     @include background;
     background-color: $primary_color;
     color: white;
@@ -25,6 +26,7 @@ h1, h2, h3 {
     &.sm-heading {
         margin-bottom: 2rem;
         padding: 0.2rem 1rem;
+        /* lighten ce la regala sass: permette di partire da un colore e la seconda cifra sta ad indicare di quanto voglio schiarire il colore */
         background: rgba(lighten($primary_color, 2), 0.5);
     }
 }
