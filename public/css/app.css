@@ -126,10 +126,6 @@ main {
   height: 100%;
 }
 
-main .icons {
-  margin-top: 3rem;
-}
-
 main .icons a {
   padding: 0.5rem;
 }
