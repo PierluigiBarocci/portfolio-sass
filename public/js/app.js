@@ -10714,10 +10714,14 @@ $(document).ready(function () {
       $(this).addClass('close');
       $('.menu-branding').addClass('show');
       $('.menu-nav').addClass('show');
+      $('.menu').addClass('show');
+      $('.nav-item').addClass('show');
     } else {
       $(this).removeClass('close');
       $('.menu-branding').removeClass('show');
       $('.menu-nav').removeClass('show');
+      $('.menu').removeClass('show');
+      $('.nav-item').removeClass('show');
     }
   });
 });

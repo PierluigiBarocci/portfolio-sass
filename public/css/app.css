@@ -119,6 +119,126 @@ header .menu-btn.close .btn-line:nth-child(3) {
           transform: rotate(-45deg) translate(7px, -6px);
 }
 
+header .menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 0.9;
+  visibility: hidden;
+}
+
+header .menu.show {
+  visibility: visible;
+}
+
+header .menu-branding,
+header .menu-nav {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  float: left;
+  width: 50%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+header .menu-nav {
+  background: #373737;
+  list-style: none;
+  -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-nav.show {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+header .menu-nav.show .nav-item:nth-child(1) {
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+}
+
+header .menu-nav.show .nav-item:nth-child(2) {
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+header .menu-nav.show .nav-item:nth-child(3) {
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+header .menu-nav.show .nav-item:nth-child(4) {
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+header .menu-nav .nav-item {
+  -webkit-transform: translate3d(600px, 0, 0);
+          transform: translate3d(600px, 0, 0);
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-nav .nav-item.show {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+header .menu-nav .nav-item.current > a {
+  color: #eece1a;
+}
+
+header .menu-nav .nav-item .nav-link {
+  display: inline-block;
+  position: relative;
+  font-size: 2rem;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  font-weight: 300;
+  color: white;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-nav .nav-item .nav-link:hover {
+  color: #eece1a;
+}
+
+header .menu-branding {
+  background: #444;
+  -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0);
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-branding.show {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+header .menu-branding .portrait {
+  width: 250px;
+  height: 250px;
+  /*background: url('');*/
+  background: url("https://cdn.pixabay.com/photo/2015/04/08/04/15/eyes-712125_960_720.jpg");
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 3px solid #eece1a;
+}
+
 /* Styling Main */
 
 main {
