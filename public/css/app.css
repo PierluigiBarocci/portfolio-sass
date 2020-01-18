@@ -8,13 +8,18 @@
   box-sizing: border-box;
 }
 
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 body {
   /*includo il mixin che gestisce lo sfondo e l'overlay */
   background-color: #444;
   color: white;
   font-family: "Gayathri", sans-serif;
   height: 100%;
-  overflow: hidden;
   line-height: 1.5;
 }
 
@@ -34,6 +39,10 @@ body#bg-img:after {
   height: 100vh;
   background: rgba(68, 68, 68, 0.9);
   z-index: -1;
+}
+
+body#bg-img {
+  overflow: hidden;
 }
 
 h1,
@@ -265,7 +274,67 @@ main#home h1 {
   margin-top: 20vh;
 }
 
+main#about .about-info .bio-container {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+main#about .about-info .bio-container .bio {
+  width: 55%;
+  font-size: 1.5rem;
+}
+
+main#about .about-info .bio-container .bio-image {
+  width: 45%;
+}
+
+main#about .about-info .bio-container .bio-image img {
+  width: 250px;
+  height: 250px;
+  margin-left: 30px;
+  border-radius: 50%;
+  border: 3px solid #eece1a;
+}
+
+main#about .about-info .job-container .job-card {
+  float: left;
+  width: 30%;
+  padding: 1.5rem;
+  background: #515151;
+  border-bottom: 3px solid #eece1a;
+}
+
+main#about .about-info .job-container .job-card:nth-child(2) {
+  margin: 0 30px;
+}
+
+main#about .about-info .job-container .job-card h6 {
+  margin: 10px 0;
+}
+
+/* Styling Footer */
+
+footer#main-footer {
+  height: 60px;
+  text-align: center;
+  padding: 1rem;
+  background: #2b2b2b;
+  color: white;
+}
+
 /* Media query */
+
+@media screen and (min-width: 1024px) {
+  main#about .about-info .bio-container .bio {
+    width: 65%;
+  }
+
+  main#about .about-info .bio-container .bio-image {
+    width: 35%;
+  }
+}
 
 @media screen and (max-width: 768px) {
   main {
@@ -277,6 +346,30 @@ main#home h1 {
   main .lg-heading {
     line-height: 1;
     margin-bottom: 1rem;
+  }
+
+  main#about .about-info .bio-container {
+    display: block;
+  }
+
+  main#about .about-info .bio-container .bio,
+  main#about .about-info .bio-container .bio-image {
+    width: 100%;
+    margin: 30px 0;
+  }
+
+  main#about .about-info .bio-container .bio-image img {
+    margin: 0;
+  }
+
+  main#about .about-info .job-container .job-card {
+    float: none;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  main#about .about-info .job-container .job-card:nth-child(2) {
+    margin: 30px 0;
   }
 
   header .menu-nav,
@@ -319,6 +412,19 @@ main#home h1 {
 
   main#home {
     padding: 2rem;
+  }
+
+  main#about h1 {
+    font-size: 4rem;
+  }
+
+  main#about .about-info .bio-container .bio {
+    font-size: 1rem;
+  }
+
+  main#about .about-info .bio-container .bio-image img {
+    width: 100px;
+    height: 100px;
   }
 }
 

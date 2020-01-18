@@ -6,6 +6,12 @@
     box-sizing: border-box;
 }
 
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
 body {
     /*includo il mixin che gestisce lo sfondo e l'overlay */
     @include background;
@@ -13,8 +19,11 @@ body {
     color: setTextColor($primary_color);
     font-family: 'Gayathri', sans-serif;
     height: 100%;
-    overflow: hidden;
     line-height: 1.5;
+
+    &#bg-img {
+        overflow: hidden;
+    }
 }
 
 h1, h2, h3 {

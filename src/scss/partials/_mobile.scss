@@ -1,5 +1,19 @@
 /* Media query */
+@media screen and (min-width: 1024px) {
+    main#about {
+        .about-info {
+            .bio-container {
+                .bio {
+                    width: 65%;
+                }
+                .bio-image {
+                    width: 35%;
 
+                }
+            }
+        }
+    }
+}
 @media screen and (max-width: 768px) {
     main {
         align-items: center;
@@ -8,6 +22,34 @@
         .lg-heading {
             line-height: 1;
             margin-bottom: 1rem;
+        }
+
+        &#about {
+            .about-info {
+                .bio-container {
+                    display: block;
+
+                    .bio, .bio-image {
+                        width: 100%;
+                        margin: 30px 0;
+                    }
+
+                    .bio-image img {
+                        margin: 0;
+                    }
+                }
+                .job-container {
+                    .job-card {
+                        float: none;
+                        width: 100%;
+                        margin: 20px 0;
+
+                        &:nth-child(2) {
+                            margin: 30px 0;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -48,7 +90,7 @@
 
 
 @media screen and (max-width: 500px) {
-    main#home h1{
+    main#home h1 {
         margin-top: 15vh;
         font-size: 4rem;
     }
@@ -57,4 +99,23 @@
         padding: 2rem;
     }
 
+    main#about{
+        h1 {
+            font-size: 4rem;
+        }
+
+        .about-info {
+            .bio-container {
+                .bio {
+                    font-size: 1rem;
+                }
+
+                .bio-image img {
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+        }
+
+    }
 };

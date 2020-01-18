@@ -23,4 +23,59 @@ main {
             margin-top: 20vh;
         }
     }
+
+    &#about {
+        .about-info {
+            .bio-container {
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 30px;
+                .bio {
+                    width: 55%;
+                    font-size: 1.5rem;
+                }
+
+                .bio-image {
+                    width: 45%;
+
+                }
+                .bio-image img {
+                    width: 250px;
+                    height: 250px;
+                    margin-left: 30px;
+                    border-radius: 50%;
+                    border: 3px solid $secondary_color;
+                }
+            }
+
+            .job-container {
+
+                .job-card {
+                    float: left;
+                    width: 30%;
+                    padding: 1.5rem;
+                    background: lighten($primary_color, 5);
+                    border-bottom: 3px solid $secondary_color;
+
+                    &:nth-child(2) {
+                        margin: 0 30px;
+                    }
+                    h6 {
+                        margin: 10px 0;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+/* Styling Footer */
+
+footer#main-footer {
+    height: 60px;
+    text-align: center;
+    padding: 1rem;
+    background: darken($primary_color, 10);
+    color: setTextColor($primary_color);
 }
