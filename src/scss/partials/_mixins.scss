@@ -30,3 +30,14 @@
 @mixin translate3d ($x, $y) {
     transform: translate3d(#{$x}, #{$y}, 0);
 };
+
+
+// Setta il rapporto tra colore primario e secondario
+
+@function setTextColor($color) {
+    @if (lightness($color) > 40) {
+        @return #000;
+    } @else {
+        @return white;
+    }
+};

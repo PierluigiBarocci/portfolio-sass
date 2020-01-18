@@ -10,7 +10,7 @@ body {
     /*includo il mixin che gestisce lo sfondo e l'overlay */
     @include background;
     background-color: $primary_color;
-    color: white;
+    color: setTextColor($primary_color);
     font-family: 'Gayathri', sans-serif;
     height: 100%;
     overflow: hidden;
@@ -33,7 +33,7 @@ h1, h2, h3 {
 }
 
 a {
-    color: white;
+    color: setTextColor($primary_color);
     text-decoration: none;
 }
 
