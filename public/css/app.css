@@ -14,7 +14,6 @@ body {
   color: white;
   font-family: "Gayathri", sans-serif;
   height: 100%;
-  overflow: hidden;
   line-height: 1.5;
 }
 
@@ -306,19 +305,14 @@ main#home h1 {
 
   header .menu-branding .portrait {
     /*background: url('');*/
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
 }
 
 @media screen and (max-width: 500px) {
   main#home h1 {
-    margin-top: 15vh;
-    font-size: 4rem;
-  }
+    margin-top: 10vh;
 
-  main#home {
-    padding: 2rem;
   }
 }
-
