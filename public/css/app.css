@@ -14,6 +14,7 @@ body {
   color: white;
   font-family: "Gayathri", sans-serif;
   height: 100%;
+  overflow: hidden;
   line-height: 1.5;
 }
 
@@ -262,5 +263,62 @@ main#home {
 
 main#home h1 {
   margin-top: 20vh;
+}
+
+/* Media query */
+
+@media screen and (max-width: 768px) {
+  main {
+    -webkit-box-align: center;
+            align-items: center;
+    text-align: center;
+  }
+
+  main .lg-heading {
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  header .menu-nav,
+  header .menu-branding {
+    float: none;
+    width: 100%;
+  }
+
+  header .menu-nav.show,
+  header .menu-branding.show {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+
+  header .menu-nav {
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+    height: 75vh;
+    font-size: 24px;
+  }
+
+  header .menu-branding {
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+    height: 25vh;
+  }
+
+  header .menu-branding .portrait {
+    /*background: url('');*/
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main#home h1 {
+    margin-top: 15vh;
+    font-size: 4rem;
+  }
+
+  main#home {
+    padding: 2rem;
+  }
 }
 
