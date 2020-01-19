@@ -16,7 +16,7 @@
 
 body {
   /*includo il mixin che gestisce lo sfondo e l'overlay */
-  background-color: #444;
+  background-color: #18121e;
   color: white;
   font-family: "Gayathri", sans-serif;
   height: 100%;
@@ -37,7 +37,7 @@ body#bg-img:after {
   right: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(68, 68, 68, 0.9);
+  background: rgba(24, 18, 30, 0.9);
   z-index: -1;
 }
 
@@ -64,7 +64,7 @@ h3.sm-heading {
   margin-bottom: 2rem;
   padding: 0.2rem 1rem;
   /* lighten ce la regala sass: permette di partire da un colore e la seconda cifra sta ad indicare di quanto voglio schiarire il colore */
-  background: rgba(73, 73, 73, 0.5);
+  background: rgba(29, 22, 36, 0.5);
 }
 
 a {
@@ -73,7 +73,7 @@ a {
 }
 
 .text-secondary {
-  color: #eece1a;
+  color: #ff3b3f;
 }
 
 /* Styling Header */
@@ -159,7 +159,7 @@ header .menu-nav {
 }
 
 header .menu-nav {
-  background: #373737;
+  background: #0b080e;
   list-style: none;
   -webkit-transform: translate3d(0, -100%, 0);
           transform: translate3d(0, -100%, 0);
@@ -205,7 +205,7 @@ header .menu-nav .nav-item.show {
 }
 
 header .menu-nav .nav-item.current > a {
-  color: #eece1a;
+  color: #ff3b3f;
 }
 
 header .menu-nav .nav-item .nav-link {
@@ -221,11 +221,11 @@ header .menu-nav .nav-item .nav-link {
 }
 
 header .menu-nav .nav-item .nav-link:hover {
-  color: #eece1a;
+  color: #ff3b3f;
 }
 
 header .menu-branding {
-  background: #444;
+  background: #18121e;
   -webkit-transform: translate3d(0, 100%, 0);
           transform: translate3d(0, 100%, 0);
   -webkit-transition: all 0.5s ease-out;
@@ -246,14 +246,14 @@ header .menu-branding .portrait {
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50%;
-  border: 3px solid #eece1a;
+  border: 3px solid #ff3b3f;
 }
 
 /* Styling Main */
 
 main {
   padding: 4rem;
-  height: 100%;
+  min-height: calc(100vh - 60px);
 }
 
 main .icons a {
@@ -261,7 +261,7 @@ main .icons a {
 }
 
 main .icons a:hover {
-  color: #eece1a;
+  color: #ff3b3f;
   -webkit-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
 }
@@ -295,15 +295,15 @@ main#about .about-info .bio-container .bio-image img {
   height: 250px;
   margin-left: 30px;
   border-radius: 50%;
-  border: 3px solid #eece1a;
+  border: 3px solid #ff3b3f;
 }
 
 main#about .about-info .job-container .job-card {
   float: left;
   width: 30%;
   padding: 1.5rem;
-  background: #515151;
-  border-bottom: 3px solid #eece1a;
+  background: #251c2e;
+  border-bottom: 3px solid #ff3b3f;
 }
 
 main#about .about-info .job-container .job-card:nth-child(2) {
@@ -335,7 +335,7 @@ main#contact .boxes div {
 }
 
 main#contact .boxes div:hover {
-  background: #eece1a;
+  background: #ff3b3f;
   color: #000;
 }
 
@@ -343,13 +343,61 @@ main#contact .boxes div:hover span {
   color: #000;
 }
 
+main#work .projects-container {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+main#work .projects-container .project-card a img {
+  width: 100%;
+  background-size: cover;
+  border: 3px solid white;
+}
+
+main#work .projects-container .project-card a img:hover {
+  border: 3px solid #ff3b3f;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+main#work .projects-container .project-card a.btn,
+main#work .projects-container .project-card a.btn-dark,
+main#work .projects-container .project-card a.btn-light {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+
+main#work .projects-container .project-card a.btn:hover,
+main#work .projects-container .project-card a.btn-dark:hover,
+main#work .projects-container .project-card a.btn-light:hover {
+  background-color: #ff3b3f;
+  color: #000;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+main#work .projects-container .project-card a.btn-light {
+  background: #987eb1;
+  color: #333;
+}
+
+main#work .projects-container .project-card a.btn-dark {
+  background: black;
+  color: white;
+}
+
 /* Styling Footer */
 
 footer#main-footer {
   height: 60px;
   text-align: center;
+  bottom: 0;
   padding: 1rem;
-  background: #2b2b2b;
+  background: black;
   color: white;
 }
 
@@ -363,6 +411,10 @@ footer#main-footer {
   main#about .about-info .bio-container .bio-image {
     width: 35%;
   }
+
+  main#work .projects-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -375,6 +427,10 @@ footer#main-footer {
   main .lg-heading {
     line-height: 1;
     margin-bottom: 1rem;
+  }
+
+  main#work .projects-container {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   main#about .about-info .bio-container {
@@ -441,6 +497,19 @@ footer#main-footer {
   main#contact h1 {
     font-size: 4rem;
     margin-top: 15vh;
+  }
+
+  main#work {
+    padding: 2rem;
+  }
+
+  main#work h1 {
+    font-size: 4rem;
+    margin-top: 15vh;
+  }
+
+  main#work .projects-container {
+    grid-template-columns: 1fr;
   }
 
   main#home h1 {

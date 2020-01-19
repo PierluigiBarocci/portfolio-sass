@@ -2,7 +2,7 @@
 
 main {
     padding: 4rem;
-    height: 100%;
+    min-height: calc(100vh - 60px);
 
     .icons {
 
@@ -95,6 +95,56 @@ main {
             }
         }
     }
+
+    &#work {
+        .projects-container {
+            display: grid;
+            grid-gap: 0.7rem;
+            grid-template-columns: repeat(3, 1fr);
+
+            .project-card {
+                a {
+                    img {
+                        width: 100%;
+                        background-size: cover;
+                        border: 3px solid white;
+
+                        &:hover {
+                            border:3px solid $secondary_color;
+                            @include easeOut;
+                        }
+                    }
+
+                    &.btn {
+                        display: block;
+                        padding: 0.5rem 1rem;
+                        border: 0;
+                        margin-bottom: 0.3rem;
+                        text-align: center;
+
+
+                        &:hover {
+                            background-color: $secondary_color;
+                            color: setTextColor($secondary_color);
+                            @include easeOut;
+                        }
+                    }
+
+                    &.btn-light {
+                        @extend .btn;
+                        background: lighten($primary_color, 50);
+                        color: #333;
+                    }
+
+                    &.btn-dark {
+                        @extend .btn;
+                        background: darken($primary_color, 50);
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
 }
 
 /* Styling Footer */
@@ -102,6 +152,7 @@ main {
 footer#main-footer {
     height: 60px;
     text-align: center;
+    bottom: 0;
     padding: 1rem;
     background: darken($primary_color, 10);
     color: setTextColor($primary_color);
