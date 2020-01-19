@@ -24,8 +24,7 @@ body {
 }
 
 body#bg-img {
-  background: url("https://cdn.pixabay.com/photo/2015/03/26/10/24/apple-691282_1280.jpg");
-  /* background: url('../img/background.jpg');*/
+  background: url('../img/background.jpg');
   background-attachment: fixed;
   background-size: cover;
 }
@@ -240,9 +239,8 @@ header .menu-branding.show {
 header .menu-branding .portrait {
   width: 250px;
   height: 250px;
-  /*background: url('');*/
-  background: url("https://cdn.pixabay.com/photo/2015/04/08/04/15/eyes-712125_960_720.jpg");
-  background-position: right;
+  background: url('../img/fototesseraBW.jpg');
+  background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50%;
@@ -288,12 +286,17 @@ main#about .about-info .bio-container .bio {
 
 main#about .about-info .bio-container .bio-image {
   width: 45%;
+  text-align: center;
 }
 
-main#about .about-info .bio-container .bio-image img {
+main#about .about-info .bio-container .bio-image .immagine{
   width: 250px;
   height: 250px;
-  margin-left: 30px;
+  background: url('../img/fototesseraBW.jpg');
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
   border-radius: 50%;
   border: 3px solid #ff3b3f;
 }
@@ -405,7 +408,7 @@ footer#main-footer {
 
 @media screen and (min-width: 1024px) {
   main#about .about-info .bio-container .bio {
-    width: 65%;
+    width: 60%;
   }
 
   main#about .about-info .bio-container .bio-image {
@@ -529,9 +532,8 @@ footer#main-footer {
     font-size: 1rem;
   }
 
-  main#about .about-info .bio-container .bio-image img {
+  main#about .about-info .bio-container .bio-image .immagine {
     width: 100px;
     height: 100px;
   }
 }
-
