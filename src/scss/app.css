@@ -1,0 +1,512 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Gayathri:400,700&display=swap");
+/* Common Rules */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+body {
+  /*includo il mixin che gestisce lo sfondo e l'overlay */
+  background-color: #18121e;
+  color: white;
+  font-family: 'Gayathri', sans-serif;
+  height: 100%;
+  line-height: 1.5;
+}
+
+body#bg-img {
+  background: url("https://cdn.pixabay.com/photo/2015/03/26/10/24/apple-691282_1280.jpg");
+  /* background: url('../img/background.jpg');*/
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+body#bg-img:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(24, 18, 30, 0.9);
+  z-index: -1;
+}
+
+body#bg-img {
+  overflow: hidden;
+}
+
+h1, h2, h3 {
+  font-weight: 400;
+}
+
+h1.lg-heading, h2.lg-heading, h3.lg-heading {
+  /* 6 volte il font-size di default (16px) */
+  font-size: 6rem;
+}
+
+h1.sm-heading, h2.sm-heading, h3.sm-heading {
+  margin-bottom: 2rem;
+  padding: 0.2rem 1rem;
+  /* lighten ce la regala sass: permette di partire da un colore e la seconda cifra sta ad indicare di quanto voglio schiarire il colore */
+  background: rgba(29, 22, 36, 0.5);
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.text-secondary {
+  color: #ff3b3f;
+}
+
+/* Styling Header */
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+header .menu-btn {
+  position: absolute;
+  z-index: 3;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+  /* richiamo la funzione per la transition, la riuserò spesso */
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-btn .btn-line {
+  /* l'hamburger meglio disegnarcelo, ci servirà per l'animazione più tardi */
+  width: 28px;
+  height: 3px;
+  margin-bottom: 5px;
+  background-color: white;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-btn.close {
+  /* Quando prende la classe close ruota di 180 gradi*/
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  /* E delle 3 linee di cui è composto: */
+}
+
+header .menu-btn.close .btn-line:nth-child(1) {
+  /* La prima ruota in senso orario e trasla un po' */
+  -webkit-transform: rotate(45deg) translate(5px, 5px);
+          transform: rotate(45deg) translate(5px, 5px);
+}
+
+header .menu-btn.close .btn-line:nth-child(2) {
+  /* La seconda se ne va*/
+  opacity: 0;
+}
+
+header .menu-btn.close .btn-line:nth-child(3) {
+  /* La Terza fa la marcia inversa della prima per formare una X*/
+  -webkit-transform: rotate(-45deg) translate(7px, -6px);
+          transform: rotate(-45deg) translate(7px, -6px);
+}
+
+header .menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 0.9;
+  visibility: hidden;
+}
+
+header .menu.show {
+  visibility: visible;
+}
+
+header .menu-branding, header .menu-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  float: left;
+  width: 50%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+header .menu-nav {
+  background: #0b080e;
+  list-style: none;
+  -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-nav.show {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+header .menu-nav.show .nav-item:nth-child(1) {
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+}
+
+header .menu-nav.show .nav-item:nth-child(2) {
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+header .menu-nav.show .nav-item:nth-child(3) {
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+header .menu-nav.show .nav-item:nth-child(4) {
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+header .menu-nav .nav-item {
+  -webkit-transform: translate3d(600px, 0, 0);
+          transform: translate3d(600px, 0, 0);
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-nav .nav-item.show {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+header .menu-nav .nav-item.current > a {
+  color: #ff3b3f;
+}
+
+header .menu-nav .nav-item .nav-link {
+  display: inline-block;
+  position: relative;
+  font-size: 2rem;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  font-weight: 300;
+  color: white;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-nav .nav-item .nav-link:hover {
+  color: #ff3b3f;
+}
+
+header .menu-branding {
+  background: #18121e;
+  -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0);
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+header .menu-branding.show {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+header .menu-branding .portrait {
+  width: 250px;
+  height: 250px;
+  /*background: url('');*/
+  background: url("https://cdn.pixabay.com/photo/2015/04/08/04/15/eyes-712125_960_720.jpg");
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 3px solid #ff3b3f;
+}
+
+/* Styling Main */
+main {
+  padding: 4rem;
+  min-height: calc(100vh - 60px);
+}
+
+main .icons a {
+  padding: 0.5rem;
+}
+
+main .icons a:hover {
+  color: #ff3b3f;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+main#home {
+  overflow: hidden;
+}
+
+main#home h1 {
+  margin-top: 20vh;
+}
+
+main#about .about-info .bio-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+main#about .about-info .bio-container .bio {
+  width: 55%;
+  font-size: 1.5rem;
+}
+
+main#about .about-info .bio-container .bio-image {
+  width: 45%;
+}
+
+main#about .about-info .bio-container .bio-image img {
+  width: 250px;
+  height: 250px;
+  margin-left: 30px;
+  border-radius: 50%;
+  border: 3px solid #ff3b3f;
+}
+
+main#about .about-info .job-container .job-card {
+  float: left;
+  width: 30%;
+  padding: 1.5rem;
+  background: #251c2e;
+  border-bottom: 3px solid #ff3b3f;
+}
+
+main#about .about-info .job-container .job-card:nth-child(2) {
+  margin: 0 30px;
+}
+
+main#about .about-info .job-container .job-card h6 {
+  margin: 10px 0;
+}
+
+main#contact .boxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1rem;
+}
+
+main#contact .boxes div {
+  font-size: 2rem;
+  border: 3px solid white;
+  padding: 1.5rem 2.5rem;
+  margin-bottom: 3rem;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+main#contact .boxes div:hover {
+  background: #ff3b3f;
+  color: #000;
+}
+
+main#contact .boxes div:hover span {
+  color: #000;
+}
+
+main#work .projects-container {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 0.7rem;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+main#work .projects-container .project-card a img {
+  width: 100%;
+  background-size: cover;
+  border: 3px solid white;
+}
+
+main#work .projects-container .project-card a img:hover {
+  border: 3px solid #ff3b3f;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+main#work .projects-container .project-card a.btn, main#work .projects-container .project-card a.btn-light, main#work .projects-container .project-card a.btn-dark {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+
+main#work .projects-container .project-card a.btn:hover, main#work .projects-container .project-card a.btn-light:hover, main#work .projects-container .project-card a.btn-dark:hover {
+  background-color: #ff3b3f;
+  color: #000;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+main#work .projects-container .project-card a.btn-light {
+  background: #987eb1;
+  color: #333;
+}
+
+main#work .projects-container .project-card a.btn-dark {
+  background: black;
+  color: white;
+}
+
+/* Styling Footer */
+footer#main-footer {
+  height: 60px;
+  text-align: center;
+  bottom: 0;
+  padding: 1rem;
+  background: black;
+  color: white;
+}
+
+/* Media query */
+@media screen and (min-width: 1024px) {
+  main#about .about-info .bio-container .bio {
+    width: 65%;
+  }
+  main#about .about-info .bio-container .bio-image {
+    width: 35%;
+  }
+  main#work .projects-container {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+  }
+  main .lg-heading {
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  main#work .projects-container {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  main#about .about-info .bio-container {
+    display: block;
+  }
+  main#about .about-info .bio-container .bio, main#about .about-info .bio-container .bio-image {
+    width: 100%;
+    margin: 30px 0;
+  }
+  main#about .about-info .bio-container .bio-image img {
+    margin: 0;
+  }
+  main#about .about-info .job-container .job-card {
+    float: none;
+    width: 100%;
+    margin: 20px 0;
+  }
+  main#about .about-info .job-container .job-card:nth-child(2) {
+    margin: 30px 0;
+  }
+  header .menu-nav, header .menu-branding {
+    float: none;
+    width: 100%;
+  }
+  header .menu-nav.show, header .menu-branding.show {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  header .menu-nav {
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+    height: 75vh;
+    font-size: 24px;
+  }
+  header .menu-branding {
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+    height: 25vh;
+  }
+  header .menu-branding .portrait {
+    /*background: url('');*/
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main#contact {
+    padding: 3rem;
+  }
+  main#contact h1 {
+    font-size: 4rem;
+    margin-top: 15vh;
+  }
+  main#work {
+    padding: 2rem;
+  }
+  main#work h1 {
+    font-size: 4rem;
+    margin-top: 15vh;
+  }
+  main#work .projects-container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  main#home h1 {
+    margin-top: 15vh;
+    font-size: 4rem;
+  }
+  main#home {
+    padding: 2rem;
+  }
+  main#about h1 {
+    font-size: 4rem;
+  }
+  main#about .about-info .bio-container .bio {
+    font-size: 1rem;
+  }
+  main#about .about-info .bio-container .bio-image img {
+    width: 100px;
+    height: 100px;
+  }
+}
+/*# sourceMappingURL=app.css.map */
