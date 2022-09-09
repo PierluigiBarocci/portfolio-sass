@@ -1,138 +1,138 @@
 /* Styling Header */
 
 header {
-    position: fixed;
-    z-index: 2;
-    width: 100%;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
 
-    .menu-btn {
-        position: absolute;
-        z-index: 3;
-        right: 35px;
-        top: 35px;
-        cursor: pointer;
-        /* richiamo la funzione per la transition, la riuserò spesso */
+  .menu-btn {
+    position: absolute;
+    z-index: 3;
+    right: 34px;
+    top: 34px;
+    cursor: pointer;
+    /* richiamo la funzione per la transition, la riuserò spesso */
+    @include easeOut;
+
+    .btn-line {
+      /* l'hamburger meglio disegnarcelo, ci servirà per l'animazione più tardi */
+      width: 28px;
+      height: 3px;
+      margin-bottom: 5px;
+      background-color: setTextColor($primary_color);
+      @include easeOut;
+    }
+
+    &.close {
+      /* Quando prende la classe close ruota di 180 gradi*/
+      transform: rotate(180deg);
+
+      /* E delle 3 linee di cui è composto: */
+      .btn-line {
+        &:nth-child(1) {
+          /* La prima ruota in senso orario e trasla un po' */
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        &:nth-child(2) {
+          /* La seconda se ne va*/
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          /* La Terza fa la marcia inversa della prima per formare una X*/
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+      }
+    }
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity: $background-opacity;
+    visibility: hidden;
+
+    &.show {
+      visibility: visible;
+    }
+
+    &-branding,
+    &-nav {
+      display: flex;
+      flex-flow: column wrap;
+      align-items: center;
+      justify-content: center;
+      float: left;
+      width: 50%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    &-nav {
+      background: darken($primary_color, 5);
+      list-style: none;
+      @include translate3d(0, -100%);
+      @include easeOut;
+
+      &.show {
+        @include translate3d(0, 0);
+
+        @for $item from 1 to 5 {
+          .nav-item:nth-child(#{$item}) {
+            transition-delay: $item * 0.1s;
+          }
+        }
+      }
+
+      .nav-item {
+        @include translate3d(600px, 0);
         @include easeOut;
 
-        .btn-line {
-            /* l'hamburger meglio disegnarcelo, ci servirà per l'animazione più tardi */
-            width: 28px;
-            height: 3px;
-            margin-bottom: 5px;
-            background-color: setTextColor($primary_color);
-            @include easeOut;
-        }
-
-        &.close {
-            /* Quando prende la classe close ruota di 180 gradi*/
-            transform: rotate(180deg);
-
-            /* E delle 3 linee di cui è composto: */
-            .btn-line {
-                &:nth-child(1) {
-                    /* La prima ruota in senso orario e trasla un po' */
-                    transform: rotate(45deg) translate(5px, 5px);
-                }
-                &:nth-child(2) {
-                    /* La seconda se ne va*/
-                    opacity: 0;
-                }
-                &:nth-child(3) {
-                    /* La Terza fa la marcia inversa della prima per formare una X*/
-                    transform: rotate(-45deg) translate(7px, -6px);
-                }
-            }
-        }
-    }
-
-    .menu {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        opacity: $background-opacity;
-        visibility: hidden;
-
         &.show {
-            visibility: visible;
+          @include translate3d(0, 0);
         }
 
-        &-branding, &-nav {
-            display: flex;
-            flex-flow: column wrap;
-            align-items: center;
-            justify-content: center;
-            float: left;
-            width: 50%;
-            height: 100vh;
-            overflow: hidden;
+        &.current > a {
+          color: $secondary_color;
         }
 
-        &-nav {
-            background: darken($primary_color, 5);
-            list-style: none;
-            @include translate3d (0, -100%);
-            @include easeOut;
+        .nav-link {
+          display: inline-block;
+          position: relative;
+          font-size: 2rem;
+          text-transform: uppercase;
+          padding: 1rem 0;
+          font-weight: 300;
+          color: setTextColor($primary_color);
+          @include easeOut;
 
-            &.show {
-                @include translate3d (0, 0);
-
-                @for $item from 1 to 5 {
-                    .nav-item:nth-child(#{$item}) {
-                        transition-delay: $item * 0.1s;
-                    }
-                }
-            }
-
-            .nav-item {
-                @include translate3d (600px, 0);
-                @include easeOut;
-
-                &.show {
-                    @include translate3d (0, 0);
-                }
-
-                &.current > a {
-                    color: $secondary_color;
-                }
-
-
-                .nav-link {
-                    display: inline-block;
-                    position: relative;
-                    font-size: 2rem;
-                    text-transform: uppercase;
-                    padding: 1rem 0;
-                    font-weight: 300;
-                    color: setTextColor($primary_color);
-                    @include easeOut;
-
-                    &:hover {
-                        color: $secondary_color;
-                    }
-                }
-            }
+          &:hover {
+            color: $secondary_color;
+          }
         }
-
-        &-branding {
-            background: $primary_color;
-            @include translate3d (0, 100%);
-            @include easeOut;
-
-            &.show {
-                @include translate3d (0, 0);
-            }
-
-            .portrait {
-                width: 250px;
-                height: 250px;
-                /*background: url('');*/
-                background: url('https://cdn.pixabay.com/photo/2015/04/08/04/15/eyes-712125_960_720.jpg');
-                background-position: right;
-                background-size: cover;
-                background-repeat: no-repeat;
-                border-radius: 50%;
-                border: 3px solid $secondary_color;
-            }
-        }
+      }
     }
+
+    &-branding {
+      background: $primary_color;
+      @include translate3d(0, 100%);
+      @include easeOut;
+
+      &.show {
+        @include translate3d(0, 0);
+      }
+
+      .portrait {
+        width: 250px;
+        height: 250px;
+        /*background: url('');*/
+        background: url("https://cdn.pixabay.com/photo/2015/04/08/04/15/eyes-712125_960_720.jpg");
+        background-position: right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 50%;
+        border: 3px solid $secondary_color;
+      }
+    }
+  }
 }
