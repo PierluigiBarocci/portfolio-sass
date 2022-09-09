@@ -8,8 +8,8 @@ header {
   .menu-btn {
     position: absolute;
     z-index: 3;
-    right: 34px;
-    top: 34px;
+    right: 35px;
+    top: 35px;
     cursor: pointer;
     /* richiamo la funzione per la transition, la riuserò spesso */
     @include easeOut;
